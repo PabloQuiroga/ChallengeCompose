@@ -26,7 +26,7 @@ android {
     buildTypes {
         debug {
             isDebuggable = true
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"") //TODO change base url
+            buildConfigField("String", "BASE_URL", "\"http://demo9401399.mockable.io/\"")
         }
         release {
             isMinifyEnabled = false

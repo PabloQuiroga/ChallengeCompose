@@ -1,4 +1,4 @@
-package com.siar.yapechallenge.core
+package com.siar.yapechallenge.data.core
 
 import com.siar.yapechallenge.BuildConfig
 import dagger.Module
@@ -26,5 +26,11 @@ class NetworkModule {
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideServiceClient(retrofit: Retrofit): RecipesClient {
+        return retrofit.create(RecipesClient::class.java)
     }
 }

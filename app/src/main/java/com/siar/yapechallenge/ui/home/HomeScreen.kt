@@ -1,7 +1,8 @@
 package com.siar.yapechallenge.ui.home
 
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 
 /*****
  * Project: Yape Challenge
@@ -10,8 +11,19 @@ import androidx.compose.runtime.Composable
  *
  *****/
 @Composable
-fun HomeScreen(
+fun HomeScreen() {
+    //val viewModel: HomeViewModel = hiltViewModel()
+    //val recipes = viewModel.recipesList.collectAsState()
 
-) {
-    Text(text = "hola")
+    LazyColumn(content = {})
+}
+
+
+
+
+
+@Preview(showSystemUi = true)
+@Composable
+fun RecipeCardPreview(){
+    HomeScreen()
 }
