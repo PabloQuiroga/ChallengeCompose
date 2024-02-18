@@ -1,4 +1,4 @@
-package com.siar.yapechallenge.ui.details
+package com.siar.yapechallenge.ui.recipes.details
 
 import androidx.compose.runtime.Composable
 

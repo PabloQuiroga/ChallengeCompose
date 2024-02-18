@@ -1,7 +1,8 @@
-package com.siar.yapechallenge.data.repository
+package com.siar.yapechallenge.data
 
 import com.siar.yapechallenge.data.models.Recipes
 import com.siar.yapechallenge.data.services.RecipesService
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 /*****
@@ -12,8 +13,14 @@ import javax.inject.Inject
  *****/
 class RecipesRepository @Inject constructor(
     private val api: RecipesService
-) {
-    suspend fun getAllRecipes(): List<Recipes>? {
+): IRecipesRepository {
+
+    override suspend operator fun invoke(): List<Recipes> {
+        delay(3000) //TODO only for demo
+        return api.getRecipes()
+    }
+
+    suspend fun getRecipes(): List<Recipes> {
         return api.getRecipes()
     }
 }

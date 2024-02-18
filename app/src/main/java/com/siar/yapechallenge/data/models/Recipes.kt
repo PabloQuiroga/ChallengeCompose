@@ -26,7 +26,9 @@ data class Recipes(
     @SerializedName("category")
     val category: String,
     @SerializedName("servings")
-    val servings: Int
+    val servings: Int,
+    @SerializedName("geo")
+    val geo: Geo
 )
 
 data class Ingredient(
@@ -41,4 +43,11 @@ data class NutritionalValues(
     val item: String,
     @SerializedName("value")
     val value: String
+)
+
+data class Geo (
+    @SerializedName("lat")
+    var lat: String,
+    @SerializedName("lng")
+    var lng: String
 )

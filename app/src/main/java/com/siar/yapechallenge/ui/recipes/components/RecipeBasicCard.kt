@@ -1,4 +1,4 @@
-package com.siar.yapechallenge.ui.components
+package com.siar.yapechallenge.ui.recipes.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.siar.yapechallenge.R
-import com.siar.yapechallenge.ui.home.BasicRecipeState
 
 /*****
  * Project: Yape Challenge
@@ -33,6 +32,7 @@ import com.siar.yapechallenge.ui.home.BasicRecipeState
  *****/
 @Composable
 fun RecipeBasicCard(
+
     onClick: () -> Unit
 ) {
     OutlinedCard(
@@ -91,8 +91,6 @@ fun RecipeBasicCard(
 @Composable
 fun RecipeMiniCardPreview(){
     RecipeBasicCard(
-        state = BasicRecipeState()
-    ) {
-        // nothin in preview
-    }
+        //state = BasicRecipeState()
+    ) {}
 }

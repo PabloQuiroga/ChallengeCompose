@@ -1,12 +1,15 @@
 package com.siar.yapechallenge.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.siar.yapechallenge.ui.details.DetailsScreen
-import com.siar.yapechallenge.ui.home.HomeScreen
+import com.siar.yapechallenge.ui.recipes.details.DetailsScreen
+import com.siar.yapechallenge.ui.recipes.home.HomeScreen
+import com.siar.yapechallenge.ui.recipes.home.HomeViewModel
 import com.siar.yapechallenge.ui.map.MapScreen
 
 /*****
@@ -32,7 +35,8 @@ fun NavGraphBuilder.addHomeScreen(){
     composable(
         AppScreens.HomeScreen.route
     ){
-        HomeScreen()
+        val viewModel: HomeViewModel = hiltViewModel()
+        HomeScreen(viewModel.uiState)
     }
 }
 

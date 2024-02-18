@@ -15,10 +15,10 @@ import javax.inject.Inject
 class RecipesService @Inject constructor(
     private val recipesClient: RecipesClient
 ) {
-    suspend fun getRecipes(): List<Recipes>?{
+    suspend fun getRecipes(): List<Recipes>{
         return withContext(Dispatchers.IO){
             val response = recipesClient.getAllRecipes()
-            response.body()
+            response.body() ?: emptyList()
         }
     }
 }

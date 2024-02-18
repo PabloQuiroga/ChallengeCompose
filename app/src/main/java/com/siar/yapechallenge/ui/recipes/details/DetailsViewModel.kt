@@ -1,4 +1,4 @@
-package com.siar.yapechallenge.ui.details
+package com.siar.yapechallenge.ui.recipes.details
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
