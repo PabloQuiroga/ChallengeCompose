@@ -23,6 +23,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.siar.yapechallenge.R
+import com.siar.yapechallenge.data.models.Geo
+import com.siar.yapechallenge.data.models.Ingredient
+import com.siar.yapechallenge.data.models.NutritionalValues
+import com.siar.yapechallenge.data.models.Recipes
 
 /*****
  * Project: Yape Challenge
@@ -32,7 +36,7 @@ import com.siar.yapechallenge.R
  *****/
 @Composable
 fun RecipeBasicCard(
-
+    recipes: Recipes,
     onClick: () -> Unit
 ) {
     OutlinedCard(
@@ -63,15 +67,14 @@ fun RecipeBasicCard(
                     .padding(start = 8.dp),
             ) {
                 Text(
-                    text = "nombre receta",
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterHorizontally),
+                    text = recipes.name,
+                    maxLines = 1,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Serif
                 )
                 Text(
-                    text = "descripcion de la \ncomida",
+                    text = recipes.description ?: "",
                     maxLines = 2,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
@@ -91,6 +94,43 @@ fun RecipeBasicCard(
 @Composable
 fun RecipeMiniCardPreview(){
     RecipeBasicCard(
-        //state = BasicRecipeState()
+        recipes = Recipes(
+            id = 4321,
+            name = "receta dos",
+            description = "descripcion de la segunda receta de pruebas",
+            image = "url.dos",
+            ingredients = listOf(
+                Ingredient(
+                "comino en polvo", "1/2 cucharada"
+                ),
+                Ingredient(
+                "pechugas de pollo, sin hueso y sin piel", "1 lb"
+                ),
+                Ingredient(
+                "melón, cortado en pedazos pequeños", "2 tazas"
+                )
+            ),
+            steps = listOf(
+                "En un recipiente pequeño, combina el jugo de naranja, el jugo de lima, el ajo y el comino. Mezcla bien. Coloca las pechugas de pollo y la mezcla de cítricos en una bolsa que se pueda sellar. Refrigera por 2 horas.",
+                "Para la salsa, en un recipiente grande, combina el melón, el ají serrano y la cebolla. Salpimienta al gusto. Reserva.",
+                "Rocía una parrilla con aerosol antiadherente. Calienta la parrilla a fuego medio. Saca las pechugas de la bolsa de plástico y desecha la marinada. Cocina las pechugas sobre la parrilla por 7-10 minutos en cada lado hasta que el pollo no esté rosado."
+            ),
+            servings = 4,
+            values = listOf(
+                NutritionalValues(
+                    "carbs", "100g"
+                ),
+                NutritionalValues(
+                    "protein", "1g"
+                ),
+                NutritionalValues(
+                    "calories", "316.49 Kcal"
+                )
+            ),
+            category = "vegetariano",
+            geo = Geo(
+                "-37.3159", "81.1496"
+            )
+        )
     ) {}
 }

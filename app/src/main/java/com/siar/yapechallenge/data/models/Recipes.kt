@@ -13,10 +13,10 @@ data class Recipes(
     val id: Int,
     @SerializedName("name")
     val name: String,
-    @SerializedName("description")
-    val description: String,
+    @SerializedName("desc")
+    val description: String?,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("ingredients")
     val ingredients: List<Ingredient>,
     @SerializedName("steps")

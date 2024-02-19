@@ -1,5 +1,6 @@
 package com.siar.yapechallenge.ui.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -36,7 +37,9 @@ fun NavGraphBuilder.addHomeScreen(){
         AppScreens.HomeScreen.route
     ){
         val viewModel: HomeViewModel = hiltViewModel()
-        HomeScreen(viewModel.uiState)
+        HomeScreen(viewModel.uiState){
+            Log.e(it.name, it.toString()) //TODO
+        }
     }
 }
 

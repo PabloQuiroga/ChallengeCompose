@@ -40,10 +40,6 @@ class HomeViewModel @Inject constructor(
             } catch (e: IOException){
                 UiRecipeState.Error
             }
-            //val result = loadRecipesUseCase()
-            //uiState = UiRecipeState.Success(result)
-            //if(!result.isNullOrEmpty()) _recipesList.value = result
-
         }
     }
 }

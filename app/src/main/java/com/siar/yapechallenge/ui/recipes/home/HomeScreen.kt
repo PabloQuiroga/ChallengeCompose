@@ -1,12 +1,20 @@
 package com.siar.yapechallenge.ui.recipes.home
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +27,8 @@ import androidx.compose.ui.unit.sp
 import com.siar.yapechallenge.R
 import com.siar.yapechallenge.data.models.Recipes
 import com.siar.yapechallenge.ui.recipes.UiRecipeState
+import com.siar.yapechallenge.ui.recipes.components.Mockdata
+import com.siar.yapechallenge.ui.recipes.components.RecipeBasicCard
 
 /*****
  * Project: Yape Challenge
@@ -28,21 +38,27 @@ import com.siar.yapechallenge.ui.recipes.UiRecipeState
  *****/
 @Composable
 fun HomeScreen(
-    uiState: UiRecipeState
+    uiState: UiRecipeState,
+    onClickItem: (Recipes) -> Unit
 ) {
-
     when (uiState){
         is UiRecipeState.Loading -> LoadingScreen()
         is UiRecipeState.Success -> {
-            ResultScreen(uiState.recipes)
+            ResultScreen(uiState.recipes, onClickItem)
         }
         is UiRecipeState.Error -> ErrorScreen()
     }
 }
 
 @Composable
-fun ResultScreen(recipes: List<Recipes>) {
-    Text(text = "Success: ${recipes.size} recetas recibidas")
+fun ResultScreen(recipes: List<Recipes>, onClickItem: (Recipes) -> Unit) {
+    LazyColumn {
+        items(recipes){
+            RecipeBasicCard(it) {
+                onClickItem(it)
+            }
+        }
+    }
 }
 
 @Composable
@@ -87,6 +103,8 @@ fun ErrorScreen(){
 @Preview(showSystemUi = true)
 @Composable
 fun RecipeCardPreview(){
-    val lista: List<Recipes> = emptyList()
-    ResultScreen(lista)
+    val lista: List<Recipes> = Mockdata.recipesList
+    ResultScreen(lista){
+        Log.e(it.name, it.toString())
+    }
 }
