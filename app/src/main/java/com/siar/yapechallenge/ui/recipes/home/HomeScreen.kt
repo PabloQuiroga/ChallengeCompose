@@ -1,20 +1,17 @@
 package com.siar.yapechallenge.ui.recipes.home
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,6 +26,7 @@ import com.siar.yapechallenge.data.models.Recipes
 import com.siar.yapechallenge.ui.recipes.UiRecipeState
 import com.siar.yapechallenge.ui.recipes.components.Mockdata
 import com.siar.yapechallenge.ui.recipes.components.RecipeBasicCard
+import com.siar.yapechallenge.ui.recipes.details.LoadContent
 
 /*****
  * Project: Yape Challenge
@@ -36,18 +34,27 @@ import com.siar.yapechallenge.ui.recipes.components.RecipeBasicCard
  * Last update: 14/02/2024
  *
  *****/
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
     uiState: UiRecipeState,
     onClickItem: (Recipes) -> Unit
 ) {
-    when (uiState){
-        is UiRecipeState.Loading -> LoadingScreen()
-        is UiRecipeState.Success -> {
-            ResultScreen(uiState.recipes, onClickItem)
+    Scaffold(
+        topBar = {
+
+        },
+        content = {
+            when (uiState){
+                is UiRecipeState.Loading -> LoadingScreen()
+                is UiRecipeState.Success -> {
+                    ResultScreen(uiState.recipes, onClickItem)
+                }
+                is UiRecipeState.Error -> ErrorScreen()
+            }
         }
-        is UiRecipeState.Error -> ErrorScreen()
-    }
+    )
+
 }
 
 @Composable

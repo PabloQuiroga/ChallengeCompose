@@ -3,4 +3,6 @@
 
     <string name="loading_failed">Failed to load</string>
     <string name="try_again">Swipe to refresh</string>
+    <string name="category">Categoria: </string>
+    <string name="servings">Porciones: </string>
 </resources>

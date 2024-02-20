@@ -3,15 +3,18 @@ package com.siar.yapechallenge.ui.navigation
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavArgument
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.siar.yapechallenge.ui.map.MapScreen
+import com.siar.yapechallenge.ui.recipes.components.Mockdata
 import com.siar.yapechallenge.ui.recipes.details.DetailsScreen
 import com.siar.yapechallenge.ui.recipes.home.HomeScreen
 import com.siar.yapechallenge.ui.recipes.home.HomeViewModel
-import com.siar.yapechallenge.ui.map.MapScreen
 
 /*****
  * Project: Yape Challenge
@@ -45,9 +48,12 @@ fun NavGraphBuilder.addHomeScreen(){
 
 fun NavGraphBuilder.addDetailsScreen(){
     composable(
-        AppScreens.DetailsScreen.route
+        AppScreens.DetailsScreen.route,
+        arguments = listOf(navArgument("mediaId") { type = NavType.IntType })
     ){
-        DetailsScreen()
+        DetailsScreen(
+            Mockdata.recipeOne //TODO
+        )
     }
 }
 
@@ -55,6 +61,11 @@ fun NavGraphBuilder.addMapScreen(){
     composable(
         AppScreens.MapScreen.route
     ){
-        MapScreen()
+        MapScreen(
+            //TODO
+            name = Mockdata.nameOne,
+            desc = Mockdata.descOne,
+            geo = Mockdata.geoOne
+        )
     }
 }

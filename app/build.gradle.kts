@@ -74,19 +74,21 @@ dependencies {
 
     //navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
-
     //Hilt
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
     //Hilt navigation compose
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
-
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-
     //splashScreen
     implementation("androidx.core:core-splashscreen:1.0.1")
+    //Glide
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    //Map
+    implementation("com.google.maps.android:maps-compose:1.0.0")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 
     //test
     testImplementation("junit:junit:4.13.2")
