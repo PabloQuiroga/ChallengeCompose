@@ -3,6 +3,11 @@
 
     <string name="loading_failed">Failed to load</string>
     <string name="try_again">Swipe to refresh</string>
-    <string name="category">Categoria: </string>
-    <string name="servings">Porciones: </string>
+    <string name="category">Categoria</string>
+    <string name="servings">Porciones</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="steps">Instrucciones</string>
+    <string name="nutritional_values">Valores nutricionales</string>
+    <string name="location">ver ubicacion</string>
+    <string name="list_title">listado de recetas</string>
 </resources>

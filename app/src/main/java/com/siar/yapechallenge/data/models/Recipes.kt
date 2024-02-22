@@ -17,12 +17,12 @@ data class Recipes(
     val description: String?,
     @SerializedName("img")
     val image: String?,
-    @SerializedName("ingredients")
-    val ingredients: List<Ingredient>,
-    @SerializedName("steps")
+    @SerializedName("instructions")
     val steps: List<String>,
+    @SerializedName("ingredients")
+    val ingredients: List<Item>,
     @SerializedName("values")
-    val values: List<NutritionalValues>,
+    val values: List<Item> = emptyList(),
     @SerializedName("category")
     val category: String,
     @SerializedName("servings")
@@ -31,18 +31,11 @@ data class Recipes(
     val geo: Geo
 )
 
-data class Ingredient(
+data class Item(
     @SerializedName("name")
     val item: String,
     @SerializedName("quantity")
     val quantity: String
-)
-
-data class NutritionalValues(
-    @SerializedName("item")
-    val item: String,
-    @SerializedName("value")
-    val value: String
 )
 
 data class Geo (

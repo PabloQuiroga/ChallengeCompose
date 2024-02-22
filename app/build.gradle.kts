@@ -26,7 +26,7 @@ android {
     buildTypes {
         debug {
             isDebuggable = true
-            buildConfigField("String", "BASE_URL", "\"http://demo9401399.mockable.io/\"")
+            buildConfigField("String", "BASE_URL", "\"http://demo9085266.mockable.io/\"")
         }
         release {
             isMinifyEnabled = false

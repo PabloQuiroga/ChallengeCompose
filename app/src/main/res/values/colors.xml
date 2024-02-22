@@ -10,4 +10,9 @@
 
     <color name="accent">#FF5B37AE</color>
     <color name="background">#FF7EC4A6</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="aqua">#FF00DDD8</color>
+    <color name="creamy_green">#F1F7F5</color>
+    <color name="navy">#FF141644</color>
+    <color name="coral">#FFFF6A5F</color>
 </resources>

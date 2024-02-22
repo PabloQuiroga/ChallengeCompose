@@ -7,5 +7,7 @@
         <item name="postSplashScreenTheme">@style/Theme.YapeChallenge</item>
     </style>
 
-    <style name="Theme.YapeChallenge" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.YapeChallenge" parent="android:Theme.Material.Light.NoActionBar" >
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>

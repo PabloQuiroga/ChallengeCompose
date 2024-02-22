@@ -10,5 +10,4 @@ import com.siar.yapechallenge.data.models.Recipes
  *****/
 interface IRecipesRepository {
     suspend operator fun invoke(): List<Recipes>
-    //suspend fun getRecipes(): List<Recipes>
 }

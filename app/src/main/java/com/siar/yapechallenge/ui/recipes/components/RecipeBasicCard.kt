@@ -2,15 +2,12 @@ package com.siar.yapechallenge.ui.recipes.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -23,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -51,7 +49,7 @@ fun RecipeBasicCard(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
         ),
-        border = BorderStroke(2.dp, Color.Blue),
+        border = BorderStroke(2.dp, colorResource(id = R.color.navy)),
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 12.dp, start = 12.dp, end = 12.dp)
@@ -59,18 +57,14 @@ fun RecipeBasicCard(
     ) {
         Row(
             modifier = Modifier.padding(12.dp),
-            //verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight() //TODO revisar el centrado este
-                    .background(Color.Blue),
-            ) {
                 SubcomposeAsyncImage(
                     model = recipes.image ?: R.drawable.recipes_cookbook,
                     contentDescription = "",
-                    contentScale = ContentScale.Inside
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .weight(1f)
+                        .size(60.dp, 90.dp)
                 ) {
                     when (painter.state) {
                         is AsyncImagePainter.State.Error -> {
@@ -87,31 +81,6 @@ fun RecipeBasicCard(
                         else -> SubcomposeAsyncImageContent()
                     }
                 }
-            }
-            /*
-            SubcomposeAsyncImage(
-                model = recipes.image ?: R.drawable.recipes_cookbook,
-                contentDescription = "",
-                modifier = Modifier
-                    .weight(1f),
-                contentScale = ContentScale.Fit
-            ) {
-                when (painter.state) {
-                    is AsyncImagePainter.State.Error -> {
-                        Image(
-                            painter = painterResource(id = R.drawable.recipes_cookbook),
-                            contentDescription = ""
-                        )
-                    }
-
-                    is AsyncImagePainter.State.Loading -> {
-                        CircularProgressIndicator(modifier = Modifier.wrapContentSize())
-                    }
-
-                    else -> SubcomposeAsyncImageContent()
-                }
-            }
-            */
 
             Column(
                 modifier = Modifier
@@ -124,30 +93,25 @@ fun RecipeBasicCard(
                     maxLines = 1,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.Serif
+                    fontFamily = FontFamily.Serif,
+                    color = colorResource(id = R.color.navy)
                 )
                 Text(
                     text = recipes.description ?: "",
                     maxLines = 2,
                     modifier = Modifier
                         .padding(horizontal = 8.dp),
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = colorResource(id = R.color.navy)
                 )
             }
             Icon(
                 painter = painterResource(id = R.drawable.arrow_right),
                 contentDescription = "icon view details",
                 modifier = Modifier
-                    .align(alignment = Alignment.Bottom)
+                    .align(alignment = Alignment.Bottom),
+                tint = colorResource(id = R.color.navy)
             )
         }
     }
-}
-
-@Preview(name = "BasicPreview")
-@Composable
-fun RecipeMiniCardPreview() {
-    RecipeBasicCard(
-        recipes = Mockdata.recipeOne
-    ) {}
 }

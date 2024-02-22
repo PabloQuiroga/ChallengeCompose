@@ -16,6 +16,8 @@ import com.google.maps.android.compose.MapType
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.siar.yapechallenge.data.models.Geo
+import com.siar.yapechallenge.data.models.Recipes
+import com.siar.yapechallenge.ui.recipes.components.CustomTopBar
 
 /*****
  * Project: Yape Challenge
@@ -23,31 +25,25 @@ import com.siar.yapechallenge.data.models.Geo
  * Last update: 14/02/2024
  *
  *****/
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MapScreen(
-    name: String,
-    desc: String,
-    geo: Geo
+    recipe: Recipes,
+    onBackClick: () -> Unit
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "Mapa")
-                }
-            )
+            CustomTopBar(title = "Mapa", backHandler = true, onBackClick)
         },
         content = {
-            LoadMapContent(name, desc, geo)
+            LoadMapContent(recipe)
         }
     )
 }
 
 @Composable
-fun LoadMapContent(name: String, desc: String, geo: Geo) {
-    val marker = LatLng(geo.lat, geo.lng)
+fun LoadMapContent(recipe: Recipes) {
+    val marker = LatLng(recipe.geo.lat, recipe.geo.lng)
     val mapZoom = 9f
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(marker, mapZoom)
@@ -63,8 +59,8 @@ fun LoadMapContent(name: String, desc: String, geo: Geo) {
     ){
         Marker(
             position = marker,
-            title = name,
-            snippet = desc
+            title = recipe.name,
+            snippet = recipe.description
         )
     }
 }

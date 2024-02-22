@@ -1,8 +1,7 @@
 package com.siar.yapechallenge.mock
 
 import com.siar.yapechallenge.data.models.Geo
-import com.siar.yapechallenge.data.models.Ingredient
-import com.siar.yapechallenge.data.models.NutritionalValues
+import com.siar.yapechallenge.data.models.Item
 import com.siar.yapechallenge.data.models.Recipes
 
 /*****
@@ -17,13 +16,13 @@ object RecipesMockDataSource {
     const val descOne = "descripcion de la receta de pruebas numero uno"
     const val imgOne = "url.uno"
     val ingredientsOne = listOf(
-        Ingredient(
+        Item(
             "jugo de naranja, recién exprimido", "1/4 taza"
         ),
-        Ingredient(
+        Item(
             "jugo de lima, recién exprimido", "1/4 taza"
         ),
-        Ingredient(
+        Item(
             "ajo grande, picado", "1 diente"
         )
     )
@@ -34,20 +33,20 @@ object RecipesMockDataSource {
     )
     const val servingsOne = 1
     val valuesOne = listOf(
-        NutritionalValues(
+        Item(
             "calories", "316.49 Kcal"
 
         ),
-        NutritionalValues(
+        Item(
             "protein", "0g"
         ),
-        NutritionalValues(
+        Item(
             "carbs", "100g"
         )
     )
     const val categoryOne = "carnes"
     val geoOne = Geo(
-        "-37.3159", "81.1496"
+        -34.517610, -58.771136
     )
 
     const val idTwo = 4321
@@ -55,13 +54,13 @@ object RecipesMockDataSource {
     const val descTwo = "descripcion de la segunda receta de pruebas"
     const val imgTwo = "url.dos"
     val ingregientsTwo = listOf(
-        Ingredient(
+        Item(
             "comino en polvo", "1/2 cucharada"
         ),
-        Ingredient(
+        Item(
             "pechugas de pollo, sin hueso y sin piel", "1 lb"
         ),
-        Ingredient(
+        Item(
             "melón, cortado en pedazos pequeños", "2 tazas"
         )
     )
@@ -72,19 +71,19 @@ object RecipesMockDataSource {
     )
     const val servingsTwo = 4
     val valuesTwo = listOf(
-        NutritionalValues(
+        Item(
             "carbs", "100g"
         ),
-        NutritionalValues(
+        Item(
             "protein", "1g"
         ),
-        NutritionalValues(
+        Item(
             "calories", "316.49 Kcal"
         )
     )
     const val categoryTwo = "vegetariano"
     val geoTwo = Geo(
-        "-37.3159", "81.1496"
+        -37.3159, 81.1496
     )
 
 
@@ -94,8 +93,8 @@ object RecipesMockDataSource {
             nameOne,
             descOne,
             imgOne,
-            ingredientsOne,
             instructionsOne,
+            ingredientsOne,
             valuesOne,
             categoryOne,
             servingsOne,
@@ -106,8 +105,8 @@ object RecipesMockDataSource {
             nameTwo,
             descTwo,
             imgTwo,
-            ingregientsTwo,
             instructionsTwo,
+            ingregientsTwo,
             valuesTwo,
             categoryTwo,
             servingsTwo,
