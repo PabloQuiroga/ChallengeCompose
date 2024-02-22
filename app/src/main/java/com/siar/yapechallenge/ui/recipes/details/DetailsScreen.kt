@@ -54,8 +54,8 @@ import com.siar.yapechallenge.ui.recipes.components.CustomTopBar
 fun DetailsScreen(
     recipe: Recipes,
     onClick: (Recipes) -> Unit,
-    onBackClick: () -> Unit
-){
+    onBackClick: () -> Unit,
+) {
     Scaffold(
         topBar = {
             CustomTopBar(title = "Detalles", backHandler = true, onBackClick)
@@ -70,8 +70,8 @@ fun DetailsScreen(
 fun LoadContent(
     recipe: Recipes,
     paddingValues: PaddingValues,
-    onClick: (Recipes) -> Unit
-){
+    onClick: (Recipes) -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -94,11 +94,11 @@ fun LoadContent(
             color = colorResource(id = R.color.accent)
         )
         recipe.description?.let {
-                Text(
-                    text = it,
-                    modifier = Modifier.padding(horizontal = 8.dp),
-                    color = colorResource(id = R.color.navy)
-                )
+            Text(
+                text = it,
+                modifier = Modifier.padding(horizontal = 8.dp),
+                color = colorResource(id = R.color.navy)
+            )
         }
 
         LoadSteps(steps = recipe.steps)
@@ -112,9 +112,15 @@ fun LoadContent(
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            LoadTextChips(resource = recipe.category, identifier = stringResource(id = R.string.category))
+            LoadTextChips(
+                resource = recipe.category,
+                identifier = stringResource(id = R.string.category)
+            )
             Spacer(modifier = Modifier.padding(4.dp))
-            LoadTextChips(resource = recipe.servings, identifier = stringResource(id = R.string.servings))
+            LoadTextChips(
+                resource = recipe.servings,
+                identifier = stringResource(id = R.string.servings)
+            )
         }
 
         if (recipe.geo.lat != 0.0) {
@@ -135,14 +141,24 @@ fun LoadContent(
 }
 
 @Composable
-fun LoadTextChips(resource: Any, identifier: String){
-    if (resource.toString().isNotEmpty()){
+fun LoadTextChips(resource: Any, identifier: String) {
+    if (resource.toString().isNotEmpty()) {
         Text(
             buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.ExtraBold, color = colorResource(id = R.color.navy))) {
+                withStyle(
+                    style = SpanStyle(
+                        fontWeight = FontWeight.ExtraBold,
+                        color = colorResource(id = R.color.navy)
+                    )
+                ) {
                     append("$identifier: ")
                 }
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Normal, color = colorResource(id = R.color.coral))) {
+                withStyle(
+                    style = SpanStyle(
+                        fontWeight = FontWeight.Normal,
+                        color = colorResource(id = R.color.coral)
+                    )
+                ) {
                     append(resource.toString())
                 }
             },
@@ -154,7 +170,7 @@ fun LoadTextChips(resource: Any, identifier: String){
 }
 
 @Composable
-fun LoadImage(img: String?){
+fun LoadImage(img: String?) {
     SubcomposeAsyncImage(
         model = img ?: R.drawable.recipes_cookbook,
         contentDescription = "",
@@ -179,7 +195,7 @@ fun LoadImage(img: String?){
 }
 
 @Composable
-fun LoadIngredients(ingredients: List<Item>){
+fun LoadIngredients(ingredients: List<Item>) {
     if (ingredients.isNotEmpty()) {
         Column(
             modifier = Modifier
@@ -214,7 +230,7 @@ fun LoadIngredients(ingredients: List<Item>){
 }
 
 @Composable
-fun LoadSteps(steps: List<String>){
+fun LoadSteps(steps: List<String>) {
     if (steps.isNotEmpty()) {
         Column(
             modifier = Modifier
@@ -248,7 +264,7 @@ fun LoadSteps(steps: List<String>){
 }
 
 @Composable
-fun LoadNutritionalValues(values: List<Item>){
+fun LoadNutritionalValues(values: List<Item>) {
     if (values.isNotEmpty()) {
         Column(
             modifier = Modifier
@@ -288,7 +304,7 @@ fun LoadNutritionalValues(values: List<Item>){
 }
 
 @Composable
-fun SetTitleSection(section: String){
+fun SetTitleSection(section: String) {
     Text(
         modifier = Modifier
             .padding(bottom = 8.dp),
@@ -304,6 +320,6 @@ fun SetTitleSection(section: String){
  */
 @Preview(showBackground = true)
 @Composable
-fun LoadTextChipsPreview(){
+fun LoadTextChipsPreview() {
     LoadTextChips(resource = "Demos", identifier = stringResource(id = R.string.servings))
 }

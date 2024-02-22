@@ -11,5 +11,5 @@ import com.siar.yapechallenge.data.models.Recipes
 sealed interface UiRecipeState {
     data class Success(val recipes: List<Recipes>) : UiRecipeState
     object Loading : UiRecipeState
-    object Error : UiRecipeState
+    data class Error(val error: String) : UiRecipeState
 }

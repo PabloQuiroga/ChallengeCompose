@@ -2,6 +2,7 @@ package com.siar.yapechallenge.ui.recipes.home
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -37,7 +38,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.siar.yapechallenge.R
@@ -55,7 +55,8 @@ import com.siar.yapechallenge.ui.recipes.components.RecipeBasicCard
 @Composable
 fun HomeScreen(
     uiState: UiRecipeState,
-    onClickItem: (Recipes) -> Unit
+    onClickItem: (Recipes) -> Unit,
+    retryClick: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -76,11 +77,15 @@ fun HomeScreen(
         },
         content = {
             when (uiState){
-                is UiRecipeState.Loading -> LoadingScreen()
+                is UiRecipeState.Loading -> {
+                    LoadingScreen()
+                }
                 is UiRecipeState.Success -> {
                     ResultScreen(uiState.recipes, onClickItem, it)
                 }
-                is UiRecipeState.Error -> ErrorScreen()
+                is UiRecipeState.Error -> {
+                    ErrorScreen(uiState.error, retryClick)
+                }
             }
         }
     )
@@ -169,9 +174,13 @@ fun LoadingScreen(){
 }
 
 @Composable
-fun ErrorScreen(){
+fun ErrorScreen(message: String, retryClick: () -> Unit){
+    //only for trace error
+    Log.e("Error Message", message)
+
     Box(modifier = Modifier
-        .fillMaxSize(),
+        .fillMaxSize()
+        .clickable { retryClick() },
         contentAlignment = Alignment.Center
     ){
         Column(

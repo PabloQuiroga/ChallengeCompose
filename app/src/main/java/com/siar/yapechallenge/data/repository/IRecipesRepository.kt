@@ -1,4 +1,4 @@
-package com.siar.yapechallenge.data
+package com.siar.yapechallenge.data.repository
 
 import com.siar.yapechallenge.data.models.Recipes
 

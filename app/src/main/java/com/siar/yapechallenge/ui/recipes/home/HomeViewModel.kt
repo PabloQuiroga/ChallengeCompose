@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.siar.yapechallenge.data.IRecipesRepository
+import com.siar.yapechallenge.data.repository.IRecipesRepository
 import com.siar.yapechallenge.ui.recipes.UiRecipeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -27,6 +27,10 @@ class HomeViewModel @Inject constructor(
         private set
 
     init {
+        loadRecipes()
+    }
+
+    fun loadRecipes(){
         getRecipes()
     }
 
@@ -38,7 +42,7 @@ class HomeViewModel @Inject constructor(
                 val result = repository()
                 UiRecipeState.Success(result)
             } catch (e: IOException){
-                UiRecipeState.Error
+                UiRecipeState.Error(e.message ?: e.toString())
             }
         }
     }

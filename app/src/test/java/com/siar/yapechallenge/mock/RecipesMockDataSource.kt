@@ -10,6 +10,7 @@ import com.siar.yapechallenge.data.models.Recipes
  * Last update: 18/02/2024
  *
  *****/
+@Suppress("MaxLineLength")
 object RecipesMockDataSource {
     const val idOne = 1234
     const val nameOne = "receta uno"

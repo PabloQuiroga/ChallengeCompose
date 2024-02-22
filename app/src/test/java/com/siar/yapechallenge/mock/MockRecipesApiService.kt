@@ -1,6 +1,6 @@
 package com.siar.yapechallenge.mock
 
-import com.siar.yapechallenge.data.IRecipesRepository
+import com.siar.yapechallenge.data.repository.IRecipesRepository
 import com.siar.yapechallenge.data.models.Recipes
 
 /*****

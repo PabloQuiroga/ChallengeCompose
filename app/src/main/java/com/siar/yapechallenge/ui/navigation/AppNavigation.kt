@@ -40,9 +40,11 @@ fun NavGraphBuilder.addHomeScreen(navController: NavHostController) {
         AppScreens.HomeScreen.route
     ){
         val viewModel: HomeViewModel = hiltViewModel()
-        HomeScreen(viewModel.uiState){
-            navigateToDetailsScreen(navController, objToJson(it))
-        }
+        HomeScreen(
+            uiState = viewModel.uiState,
+            onClickItem = { navigateToDetailsScreen(navController, objToJson(it)) },
+            retryClick = { viewModel.loadRecipes() }
+        )
     }
 }
 
