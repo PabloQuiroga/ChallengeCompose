@@ -180,7 +180,7 @@ fun LoadImage(img: String?) {
         when (painter.state) {
             is AsyncImagePainter.State.Error -> {
                 Image(
-                    painter = painterResource(id = R.drawable.recipes_cookbook),
+                    painter = painterResource(id = R.drawable.q_alphabet_round_icon),
                     contentDescription = ""
                 )
             }

@@ -57,7 +57,7 @@ fun RecipeBasicCard(
             modifier = Modifier.padding(12.dp),
         ) {
                 SubcomposeAsyncImage(
-                    model = recipes.image ?: R.drawable.recipes_cookbook,
+                    model = recipes.image ?: R.drawable.q_alphabet_round_icon,
                     contentDescription = "",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -67,7 +67,7 @@ fun RecipeBasicCard(
                     when (painter.state) {
                         is AsyncImagePainter.State.Error -> {
                             Image(
-                                painter = painterResource(id = R.drawable.recipes_cookbook),
+                                painter = painterResource(id = R.drawable.q_alphabet_round_icon),
                                 contentDescription = ""
                             )
                         }

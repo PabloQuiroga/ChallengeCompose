@@ -1,7 +1,6 @@
 package com.siar.yapechallenge.data.repository
 
 import com.siar.yapechallenge.data.models.Recipes
-import com.siar.yapechallenge.data.repository.IRecipesRepository
 import com.siar.yapechallenge.data.services.RecipesService
 import kotlinx.coroutines.delay
 import javax.inject.Inject
